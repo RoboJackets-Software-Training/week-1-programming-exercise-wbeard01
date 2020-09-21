@@ -3,9 +3,8 @@
 #include <vector>
 
 int main() {
-	std::cout << "Use the wasd keys and enter to input a direction, or the E key to stop" << std::endl;
-
-    // Write your code for step 1 here
+	
+	// Write your code for step 1 here
     std::vector<float> wheel_speeds(4);
 
     // Write your code for step 2 here
