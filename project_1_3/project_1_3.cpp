@@ -37,9 +37,41 @@ int main() {
 
   // TODO write your code here
   // =========== START =========
-
-
-
+  std::vector<double> tempx;
+  if (pack_with_zeros) {
+    for (int i = 0; i < w.size() / 2; i++) {
+      tempx.push_back(0);
+    }
+    for (double d : x) {
+      tempx.push_back(d);
+    }
+    for (int i = 0; i < w.size() / 2; i++) {
+      tempx.push_back(0);
+    }
+  } else {
+    for (int i = 0; i < w.size() / 2; i++) {
+      tempx.push_back(x[0]);
+    }
+    for (double d : x) {
+      tempx.push_back(d);
+    }
+    for (int i = 0; i < w.size() / 2; i++) {
+      tempx.push_back(x[x.size() - 1]);
+    }
+  }
+  x = tempx;
+  for (int i = 0; i < x.size() - 2 * (w.size() / 2); i++) {
+    int conv = 0;
+    for (int j = 0; j < w.size(); j++) {
+      conv += x[j + i] * w[j];
+    }
+    y.push_back(conv);
+  }
+  std::cout << "{" << y[0];
+  for (int i = 1; i < y.size(); i++) {
+    std::cout << ", " << y[i];
+  }
+  std::cout << "}" << std::endl;
 
   // =========== END ===========
 
