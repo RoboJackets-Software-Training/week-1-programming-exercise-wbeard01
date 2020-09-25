@@ -37,12 +37,52 @@ int main() {
 
   // TODO write your code here
   // =========== START =========
-
-
-
+  std::vector<double> rx;
+  if (pack_with_zeros) {
+    for (int i = 0; i < w.size() / 2; i++) {
+      rx.push_back(0);
+    }
+    for (double d : x) {
+      rx.push_back(d);
+    }
+    for (int i = 0; i < w.size() / 2; i++) {
+      rx.push_back(0);
+    }
+  } else {
+    for (int i = 0; i < w.size() / 2; i++) {
+      rx.push_back(x[0]);
+    }
+    for (double d : x) {
+      rx.push_back(d);
+    }
+    for (int i = 0; i < w.size() / 2; i++) {
+      rx.push_back(x[x.size() - 1]);
+    }
+  }
+  for (int i = 0; i < rx.size() - 2 * (w.size() / 2); i++) {
+    int conv = 0;
+    for (int j = 0; j < w.size(); j++) {
+      conv += rx[j + i] * w[j];
+    }
+    y.push_back(conv);
+  }
+  std::cout << "x: {" << x[0];
+  for (int i = 1; i < x.size(); i++) {
+    std::cout << ", " << x[i];
+  }
+  std::cout << "}" << std::endl;
+  std::cout << "w: {" << w[0];
+  for (int i = 1; i < w.size(); i++) {
+    std::cout << ", " << w[i];
+  }
+  std::cout << "}" << std::endl;
+  std::cout << "{" << y[0];
+  for (int i = 1; i < y.size(); i++) {
+    std::cout << ", " << y[i];
+  }
+  std::cout << "}" << std::endl;
 
   // =========== END ===========
 
   return 0;
 }
-
